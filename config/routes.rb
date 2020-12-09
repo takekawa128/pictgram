@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'test01/index'
-  # get 'pages/test01'
-  get 'users/new'
+  get 'sessions/new'
+
   root 'pages#index'
   get 'pages/help'
-  # get 'pages/test'
-  get 'test01/test'
-  get 'test01/help'
-  
+
   resources :users
+
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 end
