@@ -2,13 +2,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   
-  #パスワードの文字数制限を追加する
-  validates :password, length: { in: 8..32 }
-  
-  #?下記と意味が重複してる？
   
   #パスワードをアルファベット、数字の混合のみ可能にする、正規表現
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])[a-z\d]{8,32}+\z/
+  VALID_PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :password, presence: true, length: { minimum: 8, maximum: 32}, format: { with: VALID_PASSWORD_REGEX}
   
   #メールアドレスの正規表現を追加してください
