@@ -5,7 +5,6 @@ class User < ApplicationRecord
   
   #パスワードをアルファベット、数字の混合のみ可能にする、正規表現
   VALID_PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
-  validates :password, presence: true, length: { minimum: 8, maximum: 32}, format: { with: VALID_PASSWORD_REGEX}
   
   #メールアドレスの正規表現を追加してください
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/
