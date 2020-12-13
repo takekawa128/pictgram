@@ -17,4 +17,8 @@ class User < ApplicationRecord
   has_many :topics
   has_many :topics
   has_many :favorites
+  #いいねした投稿を一覧で表示する画面
+  #throughを使用することで、ユーザーがいいねしたTopicデータをすべて取得することができる
+  has_many :favorites
+  has_many :favorite_topics, through: :favorites, source: 'topic'
 end
