@@ -8,7 +8,13 @@
               <%= topic.user.name %>
             </h2>
             <%= image_tag topic.image.url %>
-            <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+            
+            #pathの引数にシンボルを与えることで、link_toにパラメーターを渡すことができる
+            #params[:topic_id]にtopic.idが入る
+            <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
+              <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+            <% end %>
+            
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <p class="topic-text">
               <%= topic.description %>
