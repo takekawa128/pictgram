@@ -14,11 +14,19 @@
             <!--いいねした場合にハートボタンの表示を消すようにコードを変更-->
             <% if !topic.favorite_users.include?(current_user) %>
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
-              <% end %>
+                <!--ハートマークの表示、非表示-->
+                <i class="far fa-heart like-btn" ></i>
+                
+              <% end %> 
+            
             <% else %>
               <%= link_to destroy_favorites_path(topic_id: topic.id), method: :post do%>
+              <!--ハートマークの表示、非表示-->
+              <i class="fas fa-heart unlike-btn"></i>
+              <% end %>
             <% end %>
+            <!--いいねの合計数をハートマークの横に表示-->
+            <%= topic.favorite_users.count %>
             
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <p class="topic-text">
